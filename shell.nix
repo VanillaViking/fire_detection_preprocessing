@@ -3,5 +3,18 @@
 with pkgs;
 
 mkShell {
-buildInputs = [ unixtools.xxd cargo rustc ]; # your dependencies here
+buildInputs = [ 
+  gcc 
+  opencv 
+  unixtools.xxd 
+  rustc 
+  cargo
+
+]; # your dependencies here
+ nativeBuildInputs = [
+      libclang.lib
+      llvmPackages.libcxxClang
+      clang
+  ];
+  LIBCLANG_PATH = "${libclang.lib}/lib";
 }

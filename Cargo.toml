@@ -4,5 +4,7 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
+anyhow = "1.0.89"
 image = "0.25.0"
+opencv = "0.93.1"
 rand = "0.8.5"
