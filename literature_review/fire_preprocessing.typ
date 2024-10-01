@@ -46,12 +46,23 @@ However, sensor nodes fail to be viable in some situations.
 Establishing wireless communications for a WSN can prove challenging in rural or untamed areas such as forests @wsnyolo.
 The sensor nodes may also be prone to damage from the wildfire, needing to be replaced in order to continue using the system. 
 
+#figure(
+  image("sensornode.png", width: 60%),
+  caption: [Basic operation of WSNs. Images sourced from Creative Commons, following the
+guidelines on Attribution 3.0 Unported, CC By 3.0],
+) <sn>
+
  Satellite-based fire detection can potentially offer significant advantages over traditional methods due to the vast areas they can monitor.
  The benefits and limitations of these systems largely depend on the satellite's orbit.
  Satellites in Sun-Synchronous Orbit (SSO) provide high spatial resolution but revisit the same location only after several days, resulting in low temporal resolution.
  This delay makes SSO satellites less effective for real-time wildfire detection @satellite.
  In contrast, Geostationary Earth Orbit (GEO) satellites remain fixed over the same region, as their orbital period matches Earth's rotation.
  Equipped with multispectral imaging sensors, GEO satellites provide continuous monitoring, making them ideal for detecting and tracking fires in real time.
+
+#figure(
+  image("wildfire_satellite.png", width: 60%),
+  caption: [Satellite Based Wildfire Detection],
+) <sn>
 
 Despite the various classifications of technologies within wildfire detection, advancements in computer vision object detection has spurred use in terrestrial, aerial as well as satellite systems. 
 #cite(label("satellite"), form: "prose") explores the feasibility of space-borne fire detection using onboard computer vision to rapidly generate alerts.
@@ -87,6 +98,11 @@ $ "RoI"_"HSV(x,y)" := cases(
 1 "if" 20 < H(x,y) < 40 "and" 50 < S(x,y) < 255 "and" 50 < V(x,y) < 255, 
 0 "otherwise",
 ) $
+
+#figure(
+  image("hsv_filter.jpg", width: 60%),
+  caption: [Resulting Image after HSV mask],
+) <sn>
 
 == Corner Detection
 
