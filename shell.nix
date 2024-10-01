@@ -9,12 +9,13 @@ buildInputs = [
   unixtools.xxd 
   rustc 
   cargo
-
 ]; # your dependencies here
  nativeBuildInputs = [
       libclang.lib
       llvmPackages.libcxxClang
       clang
+      libGL
+      libglvnd
   ];
   LIBCLANG_PATH = "${libclang.lib}/lib";
 }

@@ -90,7 +90,9 @@ $ "RoI"_"HSV(x,y)" := cases(
 
 == Corner Detection
 
-Corner detection is a common technique used in computer vision to infer features from an image. The Harris corner detector uses the autocorrelation function of the image to determine intensity differences within patches of an image. Using a Taylor expansion, the autocorrelation function can be approximated as @prepfire @harriscorner:
+Corner detection is a common technique used in computer vision to infer features from an image. 
+#cite(label("prepfire"), form: "prose") shows that a corner detection algorithm is a vital preprocessing stage, as it separates fire from other objects of similar color, which would fall within the thresholds of a HSV filter.
+The popular Harris corner detector uses the autocorrelation function of the image to determine intensity differences within patches of an image. Using a Taylor expansion, the autocorrelation function can be approximated as @prepfire @harriscorner:
 
 $ I(x_i,y_i) + [I_x(x_i,y_i) I_y(x_i,y_i)] vec(u,v, delim: "[") $
 
@@ -109,13 +111,24 @@ There are three possible situations based on their values:
 - One eigenvalue is bigger than the other eigenvalue: The region likely is an edge
 - Both eigenvalues are large: the region is a corner
 
+Therefore, corner regions within an image will output a high corner strength. These regions can be used as a candidate region that can be inferred through a CNN.
+
 == Contour Detection
 
 == Dark Channel Prior
 
+Dark Channel Prior has been commonly used to measure the degree of haziness as well as haze-removal in images. The technique is based on the observation that in most outdoor images, pixels tend to have low intensities in atleast one colour channel (dark channel). This property can be used to estimate the transmission map of an image, representing the amount of haze affecting the scene. Atmospheric haze can be modelled as follows @darkchannelprior:
+
+$ I(x) = J(x)t(x) + A(1 - t(x))  $
+
+$I(x)$ represents a pixel that reached the camera. $J(x)$ represents the undistorted pixel. $t(x)$ is the transmission map, representing how much scene radiance is retained, where a value of  1 means no haze and 0 means maximum haze. Due to the scattering of light from haze, low intensity channels in hazy patches of an image have an inherently higher value. As a result, DCP can be used to estimate $t(x)$ providing the areas of the image affected by haze. 
+#cite(label("prepfire"), form: "prose") and #cite(label("dcpsmoke"), form: "prose") note that dark channel prior methods can apply to smoke due to the similar nature, having relatively higher values in their dark channels. This causes smoke to be picked up as an area of high haze in the transmission map. #cite(label("prepfire"), form: "prose") apply a threshold to the transmission map, extracting areas with high dark channel values and suppressing the rest. 
+
 == Optical Flow
 
 == Blurring
+
+
 
 == Histogram Equalization
 
