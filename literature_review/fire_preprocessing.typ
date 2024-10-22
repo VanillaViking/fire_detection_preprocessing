@@ -104,6 +104,62 @@ $ "RoI"_"HSV(x,y)" := cases(
   caption: [Resulting Image after HSV mask],
 ) <sn>
 
+
+== Edge & Contour Detection
+
+Edge detection involves identifying regions of an image where the contrast between pixels changes dramatically. Capturing edges can be used to reveal important properties in the image as these edges often correspond to changes in depth, illumination, orientation or material. Edge detection can be particularly useful in detecting fire, as it uncovers data about positions of contours and contrasts where fire and smoke could potentially exist. More specifically, method to use low edge responses in an image region may be useful in differentiating between smoke and sky. This method is explored further in this paper
+
+Edge detection has seen use in many fields to extract valuable information from visual data. 
+#cite(label("covidsobel"), form: "prose") aims to accurately detect COVID-19 patients by using edge detection to improve detection accuracy of a CNN on CT images of the lungs. The addition of sobel edge detection to a CNN proved to be an effective approach, achieving an accuracy of 99.02% on a custom dataset.
+#cite(label("edgesat"), form: "prose") proposes an approach to detect roads in satellite images using edge detection and semantic-segmentation. The results showed accurate segmentation & edge detection even in complicated backgrounds. This shows the potential of edge detection in satellite and UAV based systems, where small details in an image are of significant importance.
+
+
+#pagebreak()
+=== Sobel Operator
+
+A popular method of edge detection thanks to its computational simplicity is the Sobel operator. The sobel filter involves convolving the image with a specific kernel which calculates the gradient of the image in x and y directions @sobel. For a given image, let us consider a pixel region such as:
+
+#table(
+  columns: (1cm, 1cm, 1cm, 1cm),
+  inset: 10pt,
+  align: horizon,
+  [50],
+  [50],
+  [100],
+  [100],
+  [50],
+  [*50*],
+  [100],
+  [100],
+  [50],
+  [50],
+  [100],
+  [100],
+  [50],
+  [50],
+  [100],
+  [100],
+)
+
+Where the value in each cell is the brightness of the pixel in that position within the image. In the region shown above, we can see that the pixel brightness rapidly changes between the 2nd and 3rd columns, which would be perceived as an edge by humans.  We can then convolve the gradient filter shown below over each pixel of the image.
+
+#table(
+  columns: (1cm, 1cm, 1cm),
+  inset: 10pt,
+  align: horizon,
+  [1],
+  [0],
+  [1],
+  [-2],
+  [0],
+  [-2],
+  [1],
+  [0],
+  [1],
+)
+
+Let us consider the pixel in the second column and second row as the pixel currently being processed. The gradient filter is multiplied with the neighbouring 3x3 area centered by our pixel of interest, and repeated with every other pixel to produce the partial derivative of the image in the x direction. By obtaining the y partial derivative in a similar manner, we may combine the images to produce a resultant image containing high absolute values near edges and a value close to 0 everywhere else. 
+
 == Corner Detection
 
 Corner detection is a common technique used in computer vision to infer features from an image. 
@@ -129,8 +185,6 @@ There are three possible situations based on their values:
 
 Therefore, corner regions within an image will output a high corner strength. These regions can be used as a candidate region that can be inferred through a CNN.
 
-== Contour Detection
-
 == Dark Channel Prior
 
 Dark Channel Prior has been commonly used to measure the degree of haziness as well as haze-removal in images. The technique is based on the observation that in most outdoor images, pixels tend to have low intensities in atleast one colour channel (dark channel). This property can be used to estimate the transmission map of an image, representing the amount of haze affecting the scene. Atmospheric haze can be modelled as follows @darkchannelprior:
@@ -138,13 +192,11 @@ Dark Channel Prior has been commonly used to measure the degree of haziness as w
 $ I(x) = J(x)t(x) + A(1 - t(x))  $
 
 $I(x)$ represents a pixel that reached the camera. $J(x)$ represents the undistorted pixel. $t(x)$ is the transmission map, representing how much scene radiance is retained, where a value of  1 means no haze and 0 means maximum haze. Due to the scattering of light from haze, low intensity channels in hazy patches of an image have an inherently higher value. As a result, DCP can be used to estimate $t(x)$ providing the areas of the image affected by haze. 
-#cite(label("prepfire"), form: "prose") and #cite(label("dcpsmoke"), form: "prose") note that dark channel prior methods can apply to smoke due to the similar nature, having relatively higher values in their dark channels. This causes smoke to be picked up as an area of high haze in the transmission map. #cite(label("prepfire"), form: "prose") apply a threshold to the transmission map, extracting areas with high dark channel values and suppressing the rest. 
+#cite(label("prepfire"), form: "prose") and #cite(label("dcpsmoke"), form: "prose") note that dark channel prior methods can apply to smoke due to the similar nature, having relatively higher values in their dark channels. This causes smoke to be picked up as an area of high haze in the transmission map. #cite(label("prepfire"), form: "prose") apply a threshold to the transmission map, extracting areas with high dark channel values and suppressing the rest. As a result, a 6% increase in detection accuracy was achieved compared to detection without extra preprocessing stages.
+
+Despite the notable improvements in smoke detection using dark channel prior, there are some drawbacks to be considered. Dark channel prior tends to be unreliable when the image consists of a large portion of sky, since the sky tends to have a high dark channel value, causing the algorithm to mistake it as hazy or smoky area.
 
 == Optical Flow
-
-== Blurring
-
-
 
 == Histogram Equalization
 
