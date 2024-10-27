@@ -196,9 +196,8 @@ $I(x)$ represents a pixel that reached the camera. $J(x)$ represents the undisto
 
 Despite the notable improvements in smoke detection using dark channel prior, there are some drawbacks to be considered. Dark channel prior tends to be unreliable when the image consists of a large portion of sky, since the sky tends to have a high dark channel value, causing the algorithm to mistake it as hazy or smoky area.
 
-== Optical Flow
-
 == Histogram Equalization
+
 
 
 
