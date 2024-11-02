@@ -1,5 +1,3 @@
-#import "@preview/wordometer:0.1.1": word-count, total-words
-
 #align(center, text(20pt)[
   *Significance of Image Pre-processing in Computer Vision Based Fire Detection, A Review*
 ])
@@ -16,7 +14,6 @@
 #show link: underline
 #show link: set text(blue)
 #show cite: set text(maroon)
-#show: word-count
 
 #outline()
 #pagebreak()
@@ -194,12 +191,37 @@ $ I(x) = J(x)t(x) + A(1 - t(x))  $
 $I(x)$ represents a pixel that reached the camera. $J(x)$ represents the undistorted pixel. $t(x)$ is the transmission map, representing how much scene radiance is retained, where a value of  1 means no haze and 0 means maximum haze. Due to the scattering of light from haze, low intensity channels in hazy patches of an image have an inherently higher value. As a result, DCP can be used to estimate $t(x)$ providing the areas of the image affected by haze. 
 #cite(label("prepfire"), form: "prose") and #cite(label("dcpsmoke"), form: "prose") note that dark channel prior methods can apply to smoke due to the similar nature, having relatively higher values in their dark channels. This causes smoke to be picked up as an area of high haze in the transmission map. #cite(label("prepfire"), form: "prose") apply a threshold to the transmission map, extracting areas with high dark channel values and suppressing the rest. As a result, a 6% increase in detection accuracy was achieved compared to detection without extra preprocessing stages.
 
-Despite the notable improvements in smoke detection using dark channel prior, there are some drawbacks to be considered. Dark channel prior tends to be unreliable when the image consists of a large portion of sky, since the sky tends to have a high dark channel value, causing the algorithm to mistake it as hazy or smoky area.
+
+#figure(
+  image("dcp.png", width: 90%),
+  caption: [Image processed with Dark channel prior & thresholded to high intensity values],
+) <dcp>
+
+As shown in @dcp, DCP reveals areas with high intensity values in all three channels, causing haze, smoke, and sky regions to appear very bright compared to the rest in the second image. In the third image, regions below a certain intensity threshold are suppressed to zero. This gives us the regions where there is a high chance of smoke or fog.
+
+Despite the notable improvements in smoke detection using dark channel prior, there are some drawbacks to be considered. Dark channel prior tends to be unreliable when the image consists of a large portion of sky, since the sky tends to have a high dark channel value, causing the algorithm to mistake it as hazy or smoky area. This is evident in @dcp, where the sky is included in the final thresholded output image.
+
 
 == Histogram Equalization
 
+Histogram Equalization increases the global contrast in images, which can enhance the visibility of finer details within an image. The algorithm spreads the intensity values out in an image so that it utilizes the full range of values more efficiently @he. As a result, HE is most effective on images with a narrow range of intensity values.
 
+HE's effectiveness at enhancing image quality makes it a practical technique in many scenarios.
+#cite(label("shipfirehe"), form: "prose") presents a system to detect early fires inside a ship using a YOLO computer vision model. Images were preprocessed with Histogram Equalization to reduce the impact of water vapour on the quality of the images, contributing to the remarkable 99% accuracy of the model.
+#cite(label("xrayhe"), form: "prose") investigates using CLAHE, an advanced form of histogram equalization along with a YOLOv4 model to detect bone fracture features in xray images, obtaining a result of 81.91% when trained on a small dataset.
 
+Let us consider $n_i$ as the number of occurences of the gray level $i$ in a greyscale image. The probability of a pixel with level $i$ is as follows:
 
+$ p(i) = n_i/n, 0 <= i < L $
+
+Where $L$ is the total number of gray levels in the image. The cumulative distribution function can then be defined:
+
+$ "cdf"(i) = sum^L_(j=0) p(j)  $
+
+In order to achieve a flat histogram of values, the CDF must be linearized. This can be carried out by the following equation:
+
+$ h(v) = "round"(("cdf"(v) - "cdf"_"min")/(N - "cdf"_min)) $
+
+Where $N$ is the number of pixels in the image.
 
 #bibliography("ref.bib", style: "apa")
