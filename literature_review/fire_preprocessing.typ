@@ -78,7 +78,7 @@ The models were trained using an open access dataset of 3886 images and found th
 Augmenting data with synthetically generated samples investigated by #cite(label("augment"), form: "prose") found that inserting data-space transformations such as warped images provided improved performance and reduced overfitting.
 #cite(label("prepfire"), form: "prose") proposed an image pre-processing pipeline using advanced techniques such as HSV filters and corner detection to assist models with classification by eliminating unwanted noise in images. This method has observed to improve fire detection accuracy by 5.5% and smoke detection by 6% in object detection models. 
 
- This paper contributes a benchmark of different pre-processing filters and algorithms to uncover insights on an ideal pipeline for wildfire detection, using metrics such as speed, power consumption and model accuracy. The benchmarks are carried out on a Raspberry Pi 4B, to similate low-powered edge computing hardware that is consistently used in terrestrial, UAV and satellite systems. Large deep-learning networks are unviable on these systems due to the high computational intensity, while models with reduced parameters are more efficient but suffer from less accurate inference. The preprocessing pipeline aims to improve the accuracy of lightweight models by highlighting important features in fire and smoke, while reducing unwanted noise in the image. For classification, 
+ This paper contributes a benchmark of different pre-processing filters and algorithms to uncover insights on an ideal pipeline for wildfire detection, using metrics such as speed, power consumption and model accuracy. The benchmarks are carried out on a Raspberry Pi 4B, to similate low-powered edge computing hardware that is consistently used in terrestrial, UAV and satellite systems. Large deep-learning networks are unviable on these systems due to the high computational intensity, while models with reduced parameters are more efficient but suffer from less accurate inference. The preprocessing pipeline aims to improve the accuracy of lightweight models by highlighting important features in fire and smoke, while reducing unwanted noise in the image.
 
 = Image Pre-Processing Algorithms
 
@@ -155,7 +155,19 @@ Where the value in each cell is the brightness of the pixel in that position wit
   [1],
 )
 
-Let us consider the pixel in the second column and second row as the pixel currently being processed. The gradient filter is multiplied with the neighbouring 3x3 area centered by our pixel of interest, and repeated with every other pixel to produce the partial derivative of the image in the x direction. By obtaining the y partial derivative in a similar manner, we may combine the images to produce a resultant image containing high absolute values near edges and a value close to 0 everywhere else. 
+Let us consider the pixel in the second column and second row as the pixel currently being processed. Each value in the gradient filter is multiplied with the corresponding pixel in the neighbouring 3x3 area around our center pixel, and summed. In our example, this would output a high value of 200, as our area of interest contains high intensity pixels on the right and lower intensity on the left. 
+
+This process is repeated with every other pixel to produce the partial derivative of the image in the x direction. By obtaining the y partial derivative in a similar manner, we may combine the images to produce a resultant image containing high absolute values near edges and a value close to 0 everywhere else. The x and y gradients can be combined using the following method:
+
+$ G = sqrt(G_x^2 + G_y^2) $
+
+Where G is the positive magnitude of the intensity of an edge at that pixel. Pixels with small edge response will have a value closer to 0 (black) while pixels around an edge will have a high value and appear white. The effects of a sobel filter on an image can be seen in @sobelimg, where most of the scenery and smoke is covered in many white lines, while the small area of sky above is almost completely dark.
+
+
+#figure(
+  image("sobelsmoke.png", width: 90%),
+  caption: [Image with smoke processed using a basic sobel filter],
+) <sobelimg>
 
 == Corner Detection
 
@@ -181,6 +193,11 @@ There are three possible situations based on their values:
 - Both eigenvalues are large: the region is a corner
 
 Therefore, corner regions within an image will output a high corner strength. These regions can be used as a candidate region that can be inferred through a CNN.
+
+#figure(
+  image("corner.png", width: 60%),
+  caption: [Corner detection executed on HSV-filtered image of fire (corners marked green)],
+) <firecorner>
 
 == Dark Channel Prior
 
@@ -213,7 +230,7 @@ HE's effectiveness at enhancing image quality makes it a practical technique in 
 Let us consider $n_i$ as the number of occurences of the gray level $i$ in a greyscale image. The probability of a pixel with level $i$ is as follows:
 
 $ p(i) = n_i/n, 0 <= i < L $
-
+  
 Where $L$ is the total number of gray levels in the image. The cumulative distribution function can then be defined:
 
 $ "cdf"(i) = sum^L_(j=0) p(j)  $
@@ -223,5 +240,18 @@ In order to achieve a flat histogram of values, the CDF must be linearized. This
 $ h(v) = "round"(("cdf"(v) - "cdf"_"min")/(N - "cdf"_min)) $
 
 Where $N$ is the number of pixels in the image.
+
+By applying this function to each pixel of the original image, we obtain a resulting image with a flatter histogram of intensities, increasing contrast and visibility in the image.
+
+#figure(
+  image("firehe.png", width: 90%),
+  caption: [Histogram equalization on image],
+) <firehe>
+
+== An Improved Smoke Detection System
+
+
+
+
 
 #bibliography("ref.bib", style: "apa")
