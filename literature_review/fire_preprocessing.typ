@@ -248,10 +248,46 @@ By applying this function to each pixel of the original image, we obtain a resul
   caption: [Histogram equalization on image],
 ) <firehe>
 
-== An Improved Smoke Detection System
+= An Improved Smoke Detection System
 
+Using Dark Channel Prior to preprocess images has proven to be worthwhile for improving detection accuracy @dcpsmoke @dcpsmoke2. By isolating smoke areas from other background noise in the image, DCP simplifies classification for a neural network, allowing for better results on smaller datasets and shallower, faster models. However, DCP fails to be effective in images that contain other artifacts of high light-intensity, such as the sky. This could cause inconsistent results particularly in terrestrially placed detection nodes, where the camera might have small parts of the sky in frame.
 
+A method to address this shortcoming using edge detection is explored. Generally, we can assume that smoke in an image is more noisy and contains contours and textures that a plain sky would not have. This texture can be picked up by a Sobel operator in an edge response image. The response image may be used to identify areas with very little edge response which can safely be eliminated from consideration.
 
+#figure(
+  image("sobelsky.png", width: 60%),
+  caption: [The sobel edge filter has close to zero response on sky regions],
+) <sobelsky>
 
+In order to eliminate certain areas of an image from being considered in the DCP algorithm, a binary threshold can be used on the image, which will either suppress pixels to zero or change them to max value depending on a thresholding condition. This can be useful for creating a map of unwanted sections in an image that can be suppressed at a later stage. We can provide the Sobel filtered image to a binary threshold to supress only parts of the image which have an edge response very close to 0. The resulting image mask would be black in sky areas, allowing us to effectively detect sky regions.
+
+#figure(
+  image("edgedcp.png", width: 60%),
+  caption: [Edge Detection & DCP Filtering to detect smoke without conflating sky regions],
+) <edgedcp>
+
+In @edgedcp, A sobel filter as well as dark channel prior image is computed from the original image. The edge response image is generously dilated and blurred in order to mitigate small dark spots in the image as they are irrelevant. After applying a binary threshold, this image is used on the DCP output to suppress the pixel regions of sky.
+
+= Experimental Results
+
+The dark channel edge detection system was tested on various images as well as on a large smoke & fire dataset to benchmark speed & computational intensity, which are important in edge computing systems. The tested images show that the algorithm effectively separated smoke from sky and other unwanted noise, also being able to suppress the image completely in cases of no detected smoke or haze.
+
+Notable weak points of the algorithm include differentiation between smoke and clouds. Smaller clouds with visible edges and contours can appear similar, which may reduce the algorithm's accuracy. Darker smoke such as those from burning fossil fuels are not easily detected by the edge + dcp algorithm. Since dark channel prior favours high light intensity values, dark gray or black smoke does not have any characteristics that DCP can detect.
+
+#figure(
+  image("results0.png", width: 60%),
+) <r0>
+
+#figure(
+  image("results1.png", width: 60%),
+) <r1>
+
+#figure(
+  image("results2.png", width: 60%),
+) <r2>
+
+#figure(
+  image("results3.png", width: 60%),
+) <r3>
 
 #bibliography("ref.bib", style: "apa")
