@@ -15,7 +15,6 @@
 #show link: set text(blue)
 #show cite: set text(maroon)
 
-#outline()
 #pagebreak()
 
 = Abstract
@@ -25,7 +24,11 @@
 Wildfires pose a significant threat to humans, wildlife and the environment alike.
 Left unchecked, A wildfire can spread rapidly causing large scale destruction to forests & infrastructure, as well as releasing large amounts of pollutants into the atmosphere.
 Therefore, it has become increasingly crucial to detect them as early as possible.
-This report aims to explore different methods employed in improving the performance and efficiency of wildfire detection systems, with a focus on computer vision based fire detection using Convolutional Neural Networks (CNNs).
+This report aims to explore different methods employed in improving the performance and efficiency of wildfire detection systems, with a focus on computer vision based fire detection using Convolutional Neural Networks (CNNs). Fire detection is carried out through a variety of mediums, such as terrestrial sensor nodes, UAV scanning and satellite based approaches. Observing the literature, it is apparent that computer vision plays a significant role in all systems, Making it important to maximise their efficiency and accuracy. Furthermore, it is important to optimise such systems to run on low-powered edge computing devices, which are currently used to detect wildfires. To this end, a multitude of image preprocessing filters relevant to fire detection are explored report.
+
+ This paper contributes a benchmark of different pre-processing filters and algorithms to uncover insights on an ideal pipeline for wildfire detection, using metrics such as speed, power consumption and model accuracy. The benchmarks are carried out on a Raspberry Pi 4B, to similate low-powered edge computing hardware that is consistently used in terrestrial, UAV and satellite systems. Large deep-learning networks are unviable on these systems due to the high computational intensity, while models with reduced parameters are more efficient but suffer from less accurate inference. The preprocessing pipeline aims to improve the accuracy of lightweight models by highlighting important features in fire and smoke, while reducing unwanted noise in the image.
+
+ Furthermore, an improved system for early smoke detection is investigated. The proposed dark channel prior + edge detection algorithm aims to improve on existing methods of smoke preprocessing using DCP detailed in #cite(label("prepfire"), form: "prose"). Specifically, false positives due to high light intensity artifacts in the image such as the sky are significantly mitigated, thanks to edge detection filters revealing characteristics that are unique to smoke.
 
 = Literature Review
 
@@ -78,7 +81,6 @@ The models were trained using an open access dataset of 3886 images and found th
 Augmenting data with synthetically generated samples investigated by #cite(label("augment"), form: "prose") found that inserting data-space transformations such as warped images provided improved performance and reduced overfitting.
 #cite(label("prepfire"), form: "prose") proposed an image pre-processing pipeline using advanced techniques such as HSV filters and corner detection to assist models with classification by eliminating unwanted noise in images. This method has observed to improve fire detection accuracy by 5.5% and smoke detection by 6% in object detection models. 
 
- This paper contributes a benchmark of different pre-processing filters and algorithms to uncover insights on an ideal pipeline for wildfire detection, using metrics such as speed, power consumption and model accuracy. The benchmarks are carried out on a Raspberry Pi 4B, to similate low-powered edge computing hardware that is consistently used in terrestrial, UAV and satellite systems. Large deep-learning networks are unviable on these systems due to the high computational intensity, while models with reduced parameters are more efficient but suffer from less accurate inference. The preprocessing pipeline aims to improve the accuracy of lightweight models by highlighting important features in fire and smoke, while reducing unwanted noise in the image.
 
 = Image Pre-Processing Algorithms
 
@@ -110,8 +112,6 @@ Edge detection has seen use in many fields to extract valuable information from 
 #cite(label("covidsobel"), form: "prose") aims to accurately detect COVID-19 patients by using edge detection to improve detection accuracy of a CNN on CT images of the lungs. The addition of sobel edge detection to a CNN proved to be an effective approach, achieving an accuracy of 99.02% on a custom dataset.
 #cite(label("edgesat"), form: "prose") proposes an approach to detect roads in satellite images using edge detection and semantic-segmentation. The results showed accurate segmentation & edge detection even in complicated backgrounds. This shows the potential of edge detection in satellite and UAV based systems, where small details in an image are of significant importance.
 
-
-#pagebreak()
 === Sobel Operator
 
 A popular method of edge detection thanks to its computational simplicity is the Sobel operator. The sobel filter involves convolving the image with a specific kernel which calculates the gradient of the image in x and y directions @sobel. For a given image, let us consider a pixel region such as:

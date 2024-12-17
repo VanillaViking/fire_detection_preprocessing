@@ -1,0 +1,92 @@
+\documentclass[lettersize,journal]{IEEEtran}
+\usepackage{amsmath,amsfonts}
+\usepackage{algorithmic}
+\usepackage{algorithm}
+\usepackage{array}
+\usepackage[caption=false,font=normalsize,labelfont=sf,textfont=sf]{subfig}
+\usepackage{textcomp}
+\usepackage{stfloats}
+\usepackage{url}
+\usepackage{verbatim}
+\usepackage{graphicx}
+\usepackage{cite}
+\hyphenation{op-tical net-works semi-conduc-tor IEEE-Xplore}
+% updated with editorial comments 8/9/2021
+
+\begin{document}
+
+\title{Significance of Image Pre-processing in Computer Vision Based Fire Detection, A Review}
+
+\author{Ashwin Rajesh,
+        % <-this % stops a space
+\thanks{This paper was produced by the IEEE Publication Technology Group. They are in Piscataway, NJ.}% <-this % stops a space
+\thanks{Manuscript received April 19, 2021; revised August 16, 2021.}}
+
+% The paper headers
+\markboth{Journal of \LaTeX\ Class Files,~Vol.~14, No.~8, August~2021}%
+{Shell \MakeLowercase{\textit{et al.}}: A Sample Article Using IEEEtran.cls for IEEE Journals}
+
+\IEEEpubid{0000--0000/00\$00.00~\copyright~2021 IEEE}
+% Remember, if you use this you must call \IEEEpubidadjcol in the second
+% column for its text to clear the IEEEpubid mark.
+
+\maketitle
+
+\begin{abstract}
+This document describes the most common article elements and how to use the IEEEtran class with \LaTeX \ to produce files that are suitable for submission to the IEEE.  IEEEtran can produce conference, journal, and technical note (correspondence) papers with a suitable choice of class options. 
+\end{abstract}
+
+% \begin{IEEEkeywords}
+% Article submission, IEEE, IEEEtran, journal, \LaTeX, paper, template, typesetting.
+% \end{IEEEkeywords}
+
+\section{Introduction}
+\IEEEPARstart{W}{ildfires} pose a significant threat to humans, wildlife and the
+environment alike. Left unchecked, A wildfire can spread rapidly causing
+large scale destruction to forests \& infrastructure, as well as
+releasing large amounts of pollutants into the atmosphere. Therefore, it
+has become increasingly crucial to detect them as early as possible.
+This report aims to explore different methods employed in improving the
+performance and efficiency of wildfire detection systems, with a focus
+on computer vision based fire detection using Convolutional Neural
+Networks (CNNs). Fire detection is carried out through a variety of
+mediums, such as terrestrial sensor nodes, UAV scanning and satellite
+based approaches. Observing the literature, it is apparent that computer
+vision plays a significant role in all systems, Making it important to
+maximise their efficiency and accuracy. Furthermore, it is important to
+optimise such systems to run on low-powered edge computing devices,
+which are currently used to detect wildfires. To this end, a multitude
+of image preprocessing filters relevant to fire detection are explored
+report.
+
+This paper contributes a benchmark of different pre-processing filters
+and algorithms to uncover insights on an ideal pipeline for wildfire
+detection, using metrics such as speed, power consumption and model
+accuracy. The benchmarks are carried out on a Raspberry Pi 4B, to
+similate low-powered edge computing hardware that is consistently used
+in terrestrial, UAV and satellite systems. Large deep-learning networks
+are unviable on these systems due to the high computational intensity,
+while models with reduced parameters are more efficient but suffer from
+less accurate inference. The preprocessing pipeline aims to improve the
+accuracy of lightweight models by highlighting important features in
+fire and smoke, while reducing unwanted noise in the image.
+
+Furthermore, an improved system for early smoke detection is
+investigated. The proposed dark channel prior + edge detection algorithm
+aims to improve on existing methods of smoke preprocessing using DCP
+detailed in \cite{prepfire}. Specifically, false positives due to high
+light intensity artifacts in the image such as the sky are significantly
+mitigated, thanks to edge detection filters revealing characteristics
+that are unique to smoke \cite{wsnfire}.
+
+\bibliographystyle{IEEEtran}
+\bibliography{ref}
+
+\newpage
+
+
+\vfill
+
+\end{document}
+
+
