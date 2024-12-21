@@ -148,6 +148,7 @@ detection to assist models with classification by eliminating unwanted
 noise in images. This method has observed to improve fire detection
 accuracy by 5.5\% and smoke detection by 6\% in object detection models.
 
+
 \section{Image Pre-Processing Algorithms}
 
 \subsection{HSV filter}
@@ -167,7 +168,9 @@ resulted in a 5.5\% increase in fire detection accuracy. The following
 bounds were used to preprocess images in the paper:
 
 \[\text{ RoI}_{\text{HSV(x,y) }} ≔ \begin{cases}
-1\text{ if }20 < H(x,y) < 40\text{ and }50 < S(x,y) < 255\text{ and }50 < V(x,y) < 255 \\
+1\text{ if }20 < H(x,y) < 40\text{ and } \\
+50 < S(x,y) < 255\text{ and } \\
+50 < V(x,y) < 255 \\
 0\text{ otherwise}
 \end{cases}\]
 
