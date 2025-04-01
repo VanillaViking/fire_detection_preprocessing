@@ -115,17 +115,10 @@ J.~Ryu and D.~Kwak, ``A study on a complex flame and smoke detection method
   \url{https://www.mdpi.com/2571-6255/5/4/108}
 \BIBentrySTDinterwordspacing
 
-\bibitem{resnetsmoke}
-X.~Wang, J.~Wang, L.~Chen, and Y.~Zhang, ``\BIBforeignlanguage{eng}{Improving
-  computer vision-based wildfire smoke detection by combining se-resnet with
-  svm},'' \emph{\BIBforeignlanguage{eng}{Processes}}, vol.~12, no.~4, pp.
-  747--, 2024.
-
-\bibitem{yolov8}
-\BIBentryALTinterwordspacing
-G.~Jocher, A.~Chaurasia, and J.~Qiu, ``Ultralytics yolov8,'' 2023. [Online].
-  Available: \url{https://github.com/ultralytics/ultralytics}
-\BIBentrySTDinterwordspacing
+\bibitem{segmentation}
+E.~Shelhamer, J.~Long, and T.~Darrell, ``Fully convolutional networks for
+  semantic segmentation,'' \emph{IEEE Transactions on Pattern Analysis and
+  Machine Intelligence}, vol.~39, no.~4, pp. 640--651, 2017.
 
 \bibitem{MohapatraAnkita2022EWDT}
 A.~Mohapatra and T.~Trinh, ``\BIBforeignlanguage{eng}{Early wildfire detection
@@ -149,98 +142,39 @@ F.~Afghah, ``Autonomous unmanned aerial vehicle systems in wildfire detection
   0.5em minus 0.4em\relax Cham: Springer Nature Switzerland, 2024, pp.
   386--394.
 
+\bibitem{wildfiretrackuavswarm}
+H.~X. Pham, H.~M. La, D.~Feil-Seifer, and M.~C. Deans,
+  ``\BIBforeignlanguage{eng}{A distributed control framework of multiple
+  unmanned aerial vehicles for dynamic wildfire tracking},''
+  \emph{\BIBforeignlanguage{eng}{IEEE transactions on systems, man, and
+  cybernetics. Systems}}, vol.~50, no.~4, pp. 1537--1548, 2020.
+
+\bibitem{gimbal}
+A.~P. Nunes, A.~Moutinho, and J.~R. Azinheira, ``Flying wing wildfire tracking
+  using visual servoing and gimbal control,'' in \emph{Pattern Recognition,
+  Computer Vision, and Image Processing. ICPR 2022 International Workshops and
+  Challenges}, J.-J. Rousseau and B.~Kapralos, Eds.\hskip 1em plus 0.5em minus
+  0.4em\relax Cham: Springer Nature Switzerland, 2023, pp. 160--170.
+
+\bibitem{tumorseg}
+A.~Hänsch, G.~Chlebus, H.~Meine, F.~Thielke, F.~Kock, T.~Paulus, N.~Abolmaali,
+  and A.~Schenk, ``\BIBforeignlanguage{eng}{Improving automatic liver tumor
+  segmentation in late-phase mri using multi-model training and 3d
+  convolutional neural networks},'' \emph{\BIBforeignlanguage{eng}{Scientific
+  reports}}, vol.~12, no.~1, pp. 12\,262--10, 2022.
+
+\bibitem{liverseg}
+J.~C. Delmoral and J.~M. R.S.~Tavares, ``\BIBforeignlanguage{eng}{Semantic
+  segmentation of ct liver structures: A systematic review of recent trends and
+  bibliometric analysis: Neural network-based methods for liver semantic
+  segmentation},'' \emph{\BIBforeignlanguage{eng}{Journal of medical systems}},
+  vol.~48, no.~1, pp. 97--, 2024.
+
 \bibitem{skinhsv}
 E.~K. Hassan and J.~H. Saud, ``\BIBforeignlanguage{eng}{Hsv color model and
   logical filter for human skin detection},'' in
   \emph{\BIBforeignlanguage{eng}{AIP Conference Proceedings}}, vol. 2457,
   no.~1.\hskip 1em plus 0.5em minus 0.4em\relax Melville: American Institute of
   Physics, 2023.
-
-\bibitem{covidsobel}
-\BIBentryALTinterwordspacing
-D.~Sharifrazi, R.~Alizadehsani, M.~Roshanzamir, J.~H. Joloudari, A.~Shoeibi,
-  M.~Jafari, S.~Hussain, Z.~A. Sani, F.~Hasanzadeh, F.~Khozeimeh, A.~Khosravi,
-  S.~Nahavandi, M.~Panahiazar, A.~Zare, S.~M.~S. Islam, and U.~R. Acharya,
-  ``Fusion of convolution neural network, support vector machine and sobel
-  filter for accurate detection of covid-19 patients using x-ray images,''
-  \emph{Biomedical Signal Processing and Control}, vol.~68, p. 102622, 2021.
-  [Online]. Available:
-  \url{https://www.sciencedirect.com/science/article/pii/S1746809421002196}
-\BIBentrySTDinterwordspacing
-
-\bibitem{edgesat}
-H.~Ghandorh, W.~Boulila, S.~Masood, A.~Koubaa, F.~Ahmed, and J.~Ahmad,
-  ``\BIBforeignlanguage{eng}{Semantic segmentation and edge
-  detection—approach to road detection in very high resolution satellite
-  images},'' \emph{\BIBforeignlanguage{eng}{Remote sensing (Basel,
-  Switzerland)}}, vol.~14, no.~3, pp. 613--, 2022.
-
-\bibitem{sobel}
-I.~Sobel, ``An isotropic 3x3 image gradient operator,'' \emph{Presentation at
-  Stanford A.I. Project 1968}, 02 2014.
-
-\bibitem{harriscorner}
-J.~Sánchez, N.~Monzón, and A.~Salgado, ``{An Analysis and Implementation of
-  the Harris Corner Detector},'' \emph{{Image Processing On Line}}, vol.~8, pp.
-  305--328, 2018, \url{https://doi.org/10.5201/ipol.2018.229}.
-
-\bibitem{darkchannelprior}
-K.~He, J.~Sun, and X.~Tang, ``\BIBforeignlanguage{eng}{Single image haze
-  removal using dark channel prior},'' \emph{\BIBforeignlanguage{eng}{IEEE
-  transactions on pattern analysis and machine intelligence}}, vol.~33, no.~12,
-  pp. 2341--2353, 2011.
-
-\bibitem{dcpsmoke}
-Y.~Liu, W.~Qin, K.~Liu, F.~Zhang, and Z.~Xiao, ``A dual convolution network
-  using dark channel prior for image smoke classification,'' \emph{IEEE
-  Access}, vol.~7, pp. 60\,697--60\,706, 2019.
-
-\bibitem{he}
-S.~Patel and M.~Goswami, ``Comparative analysis of histogram equalization
-  techniques,'' in \emph{2014 International Conference on Contemporary
-  Computing and Informatics (IC3I)}, 2014, pp. 167--168.
-
-\bibitem{shipfirehe}
-\BIBentryALTinterwordspacing
-A.~Ergasheva, F.~Akhmedov, A.~Abdusalomov, and W.~Kim,
-  ``\BIBforeignlanguage{English}{Advancing maritime safety: Early detection of
-  ship fires through computer vision, deep learning approaches, and histogram
-  equalization techniques},'' \emph{\BIBforeignlanguage{English}{Fire}},
-  vol.~7, no.~3, p.~84, 2024, copyright - © 2024 by the authors. Licensee
-  MDPI, Basel, Switzerland. This article is an open access article distributed
-  under the terms and conditions of the Creative Commons Attribution (CC BY)
-  license (https://creativecommons.org/licenses/by/4.0/). Notwithstanding the
-  ProQuest Terms and Conditions, you may use this content in accordance with
-  the terms of the License; Last updated - 2024-10-03;
-  SubjectsTermNotLitGenreText - Social. [Online]. Available:
-  \url{http://ezproxy.lib.uts.edu.au/login?url=https://www.proquest.com/scholarly-journals/advancing-maritime-safety-early-detection-ship/docview/3001523245/se-2}
-\BIBentrySTDinterwordspacing
-
-\bibitem{xrayhe}
-H.~P. Nguyen, T.~P. Hoang, and H.~H. Nguyen, ``A deep learning based fracture
-  detection in arm bone x-ray images,'' in \emph{2021 International Conference
-  on Multimedia Analysis and Pattern Recognition (MAPR)}, 2021, pp. 1--6.
-
-\bibitem{dcpsmoke2}
-D.-K. Kwak and J.-K. Ryu, ``\BIBforeignlanguage{eng}{A study on the dynamic
-  image-based dark channel prior and smoke detection using deep learning},''
-  \emph{\BIBforeignlanguage{eng}{Journal of electrical engineering \&
-  technology}}, vol.~17, no.~1, pp. 581--589, 2022.
-
-\bibitem{smokecolour}
-\BIBentryALTinterwordspacing
-H.-Y. Jang and H.~Cheol-Hong, ``\BIBforeignlanguage{English}{Preliminary study
-  for smoke color classification of combustibles using the distribution of
-  light scattering by smoke particles},''
-  \emph{\BIBforeignlanguage{English}{Applied Sciences}}, vol.~13, no.~1, p.
-  669, 2023, copyright - © 2023 by the authors. Licensee MDPI, Basel,
-  Switzerland. This article is an open access article distributed under the
-  terms and conditions of the Creative Commons Attribution (CC BY) license
-  (https://creativecommons.org/licenses/by/4.0/). Notwithstanding the ProQuest
-  Terms and Conditions, you may use this content in accordance with the terms
-  of the License; Last updated - 2024-05-07; SubjectsTermNotLitGenreText -
-  South Korea. [Online]. Available:
-  \url{http://ezproxy.lib.uts.edu.au/login?url=https://www.proquest.com/scholarly-journals/preliminary-study-smoke-color-classification/docview/2761155047/se-2}
-\BIBentrySTDinterwordspacing
 
 \end{thebibliography}

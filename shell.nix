@@ -4,19 +4,6 @@ with pkgs;
 
 mkShell {
 buildInputs = [ 
-  typst
-  gcc 
-  opencv 
-  unixtools.xxd 
-  rustc 
-  cargo
+  texliveFull
 ]; # your dependencies here
- nativeBuildInputs = [
-      libclang.lib
-      llvmPackages.libcxxClang
-      clang
-      libGL
-      libglvnd
-  ];
-  LIBCLANG_PATH = "${libclang.lib}/lib";
 }
