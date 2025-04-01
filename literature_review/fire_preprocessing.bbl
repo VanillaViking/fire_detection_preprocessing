@@ -44,43 +44,30 @@ S.~M. Holm, M.~D. Miller, and J.~R. Balmes,
 \bibitem{wildfirefactsheet}
 ``\BIBforeignlanguage{eng}{Protecting children from wildfire smoke and ash}.''
 
-\bibitem{prepfire}
+\bibitem{wildfirewater}
 \BIBentryALTinterwordspacing
-J.~Ryu and D.~Kwak, ``A study on a complex flame and smoke detection method
-  using computer vision detection and convolutional neural network,''
-  \emph{Fire}, vol.~5, no.~4, 2022. [Online]. Available:
-  \url{https://www.mdpi.com/2571-6255/5/4/108}
+H.~G. Smith, G.~J. Sheridan, P.~N. Lane, P.~Nyman, and S.~Haydon, ``Wildfire
+  effects on water quality in forest catchments: A review with implications for
+  water supply,'' \emph{Journal of Hydrology}, vol. 396, no.~1, pp. 170--192,
+  2011. [Online]. Available:
+  \url{https://www.sciencedirect.com/science/article/pii/S0022169410006748}
 \BIBentrySTDinterwordspacing
 
-\bibitem{uav}
-F.~Afghah, ``Autonomous unmanned aerial vehicle systems in wildfire detection
-  and management-challenges and opportunities,'' in \emph{Dynamic Data Driven
-  Applications Systems}, E.~Blasch, F.~Darema, and A.~Aved, Eds.\hskip 1em plus
-  0.5em minus 0.4em\relax Cham: Springer Nature Switzerland, 2024, pp.
-  386--394.
+\bibitem{wildfireair}
+W.~Knorr, F.~Dentener, J.-F. Lamarque, L.~Jiang, and A.~Arneth,
+  ``\BIBforeignlanguage{eng}{Wildfire air pollution hazard during the
+  21st century},'' \emph{\BIBforeignlanguage{eng}{Atmospheric chemistry and
+  physics}}, vol.~17, no.~14, pp. 9223--9236, 2017.
 
-\bibitem{MohapatraAnkita2022EWDT}
-A.~Mohapatra and T.~Trinh, ``\BIBforeignlanguage{eng}{Early wildfire detection
-  technologies in practice—a review},''
-  \emph{\BIBforeignlanguage{eng}{Sustainability}}, vol.~14, no.~19, pp.
-  12\,270--, 2022.
-
-\bibitem{wsnfire}
-\BIBentryALTinterwordspacing
-X.~Yan, H.~Cheng, Y.~Zhao, W.~Yu, H.~Huang, and X.~Zheng, ``Real-time
-  identification of smoldering and flaming combustion phases in forest using a
-  wireless sensor network-based multi-sensor system and artificial neural
-  network,'' \emph{Sensors}, vol.~16, no.~8, 2016. [Online]. Available:
-  \url{https://www.mdpi.com/1424-8220/16/8/1228}
-\BIBentrySTDinterwordspacing
-
-\bibitem{wsnyolo}
-\BIBentryALTinterwordspacing
-F.~M. Talaat and H.~ZainEldin, ``An improved fire detection approach based on
-  yolo-v8 for smart cities,'' \emph{Neural Computing and Applications},
-  vol.~35, no.~28, pp. 20\,939--20\,954, Oct 2023. [Online]. Available:
-  \url{https://doi.org/10.1007/s00521-023-08809-1}
-\BIBentrySTDinterwordspacing
+\bibitem{wildfireveg}
+M.~Ward, A.~I.~T. Tulloch, J.~Q. Radford, B.~A. Williams, A.~E. Reside, S.~L.
+  Macdonald, H.~J. Mayfield, M.~Maron, H.~P. Possingham, S.~J. Vine, J.~L.
+  O’Connor, E.~J. Massingham, A.~C. Greenville, J.~C.~Z. Woinarski, S.~T.
+  Garnett, M.~Lintermans, B.~C. Scheele, J.~Carwardine, D.~G. Nimmo, D.~B.
+  Lindenmayer, R.~M. Kooyman, J.~S. Simmonds, L.~J. Sonter, and J.~E.~M.
+  Watson, ``\BIBforeignlanguage{eng}{Impact of 2019–2020 mega-fires on
+  australian fauna habitat},'' \emph{\BIBforeignlanguage{eng}{Nature ecology \&
+  evolution}}, vol.~4, no.~10, pp. 1321--1326, 2020.
 
 \bibitem{satellite}
 \BIBentryALTinterwordspacing
@@ -97,6 +84,14 @@ R.~Ghali, M.~A. Akhloufi, and W.~S. Mseddi, ``\BIBforeignlanguage{eng}{Deep
   segmentation},'' \emph{\BIBforeignlanguage{eng}{Sensors (Basel,
   Switzerland)}}, vol.~22, no.~5, pp. 1977--, 2022.
 
+\bibitem{wsnyolo}
+\BIBentryALTinterwordspacing
+F.~M. Talaat and H.~ZainEldin, ``An improved fire detection approach based on
+  yolo-v8 for smart cities,'' \emph{Neural Computing and Applications},
+  vol.~35, no.~28, pp. 20\,939--20\,954, Oct 2023. [Online]. Available:
+  \url{https://doi.org/10.1007/s00521-023-08809-1}
+\BIBentrySTDinterwordspacing
+
 \bibitem{transferlearning}
 S.~Asif, Y.~Wenhui, K.~Amjad, H.~Jin, Y.~Tao, and S.~Jinhai,
   ``\BIBforeignlanguage{eng}{Detection of covid‐19 from chest x‐ray images:
@@ -111,6 +106,48 @@ S.~C. Wong, A.~Gatt, V.~Stamatescu, and M.~D. McDonnell,
   International Conference on Digital Image Computing: Techniques and
   Applications (DICTA)}}.\hskip 1em plus 0.5em minus 0.4em\relax IEEE, 2016,
   pp. 1--6.
+
+\bibitem{prepfire}
+\BIBentryALTinterwordspacing
+J.~Ryu and D.~Kwak, ``A study on a complex flame and smoke detection method
+  using computer vision detection and convolutional neural network,''
+  \emph{Fire}, vol.~5, no.~4, 2022. [Online]. Available:
+  \url{https://www.mdpi.com/2571-6255/5/4/108}
+\BIBentrySTDinterwordspacing
+
+\bibitem{resnetsmoke}
+X.~Wang, J.~Wang, L.~Chen, and Y.~Zhang, ``\BIBforeignlanguage{eng}{Improving
+  computer vision-based wildfire smoke detection by combining se-resnet with
+  svm},'' \emph{\BIBforeignlanguage{eng}{Processes}}, vol.~12, no.~4, pp.
+  747--, 2024.
+
+\bibitem{yolov8}
+\BIBentryALTinterwordspacing
+G.~Jocher, A.~Chaurasia, and J.~Qiu, ``Ultralytics yolov8,'' 2023. [Online].
+  Available: \url{https://github.com/ultralytics/ultralytics}
+\BIBentrySTDinterwordspacing
+
+\bibitem{MohapatraAnkita2022EWDT}
+A.~Mohapatra and T.~Trinh, ``\BIBforeignlanguage{eng}{Early wildfire detection
+  technologies in practice—a review},''
+  \emph{\BIBforeignlanguage{eng}{Sustainability}}, vol.~14, no.~19, pp.
+  12\,270--, 2022.
+
+\bibitem{wsnfire}
+\BIBentryALTinterwordspacing
+X.~Yan, H.~Cheng, Y.~Zhao, W.~Yu, H.~Huang, and X.~Zheng, ``Real-time
+  identification of smoldering and flaming combustion phases in forest using a
+  wireless sensor network-based multi-sensor system and artificial neural
+  network,'' \emph{Sensors}, vol.~16, no.~8, 2016. [Online]. Available:
+  \url{https://www.mdpi.com/1424-8220/16/8/1228}
+\BIBentrySTDinterwordspacing
+
+\bibitem{uav}
+F.~Afghah, ``Autonomous unmanned aerial vehicle systems in wildfire detection
+  and management-challenges and opportunities,'' in \emph{Dynamic Data Driven
+  Applications Systems}, E.~Blasch, F.~Darema, and A.~Aved, Eds.\hskip 1em plus
+  0.5em minus 0.4em\relax Cham: Springer Nature Switzerland, 2024, pp.
+  386--394.
 
 \bibitem{skinhsv}
 E.~K. Hassan and J.~H. Saud, ``\BIBforeignlanguage{eng}{Hsv color model and
@@ -189,5 +226,21 @@ D.-K. Kwak and J.-K. Ryu, ``\BIBforeignlanguage{eng}{A study on the dynamic
   image-based dark channel prior and smoke detection using deep learning},''
   \emph{\BIBforeignlanguage{eng}{Journal of electrical engineering \&
   technology}}, vol.~17, no.~1, pp. 581--589, 2022.
+
+\bibitem{smokecolour}
+\BIBentryALTinterwordspacing
+H.-Y. Jang and H.~Cheol-Hong, ``\BIBforeignlanguage{English}{Preliminary study
+  for smoke color classification of combustibles using the distribution of
+  light scattering by smoke particles},''
+  \emph{\BIBforeignlanguage{English}{Applied Sciences}}, vol.~13, no.~1, p.
+  669, 2023, copyright - © 2023 by the authors. Licensee MDPI, Basel,
+  Switzerland. This article is an open access article distributed under the
+  terms and conditions of the Creative Commons Attribution (CC BY) license
+  (https://creativecommons.org/licenses/by/4.0/). Notwithstanding the ProQuest
+  Terms and Conditions, you may use this content in accordance with the terms
+  of the License; Last updated - 2024-05-07; SubjectsTermNotLitGenreText -
+  South Korea. [Online]. Available:
+  \url{http://ezproxy.lib.uts.edu.au/login?url=https://www.proquest.com/scholarly-journals/preliminary-study-smoke-color-classification/docview/2761155047/se-2}
+\BIBentrySTDinterwordspacing
 
 \end{thebibliography}

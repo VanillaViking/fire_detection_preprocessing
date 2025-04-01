@@ -13,6 +13,8 @@
 \hyphenation{op-tical net-works semi-conduc-tor IEEE-Xplore}
 % updated with editorial comments 8/9/2021
 
+\usepackage{caption}
+\usepackage{subcaption}
 \usepackage{hyperref}
 \hypersetup{
     colorlinks=true,
@@ -62,106 +64,18 @@ The risk of premature death and respiratory morbidity in the general population 
 Furthermore, ambient air pollution caused by wildfire smoke has been studied to have adverse affects on children, as a result of their developing lungs and inferior nasal deposition \cite{wildfirechildren}.
 Breathing in wildfire smoke can cause chest pain and tightness, trouble breathing, diziness and other symptoms in children \cite{wildfirefactsheet}.
 
-Wildfires have been consuming increasingly large areas of forest globally in recent years, causing vast amounts of damage to the environment in the form of water & air pollution, climate change and destruction of flora and fauna.
+Wildfires have been consuming increasingly large areas of forest globally in recent years, causing vast amounts of damage to the environment in the form of water \& air pollution, climate change and destruction of flora and fauna.
 Sediment exports in water bodies reportedly may increase by up to 1459 times the unburned amount, drastically degrading water quality in the affected areas. \cite{wildfirewater}.
 Emissions of airborne particulate matter from wildfires can significant cause significant disruptions to air pollution mitigation targets set by legislation. \cite{wildfireair} shows that in high-fire seasons, pollution levels can reach dangerous levels despite aggressive reduction of anthropogenic emissions.
+An estimated 97000 km\textsuperscript{2} of vegetation was burned in the 2019-2020 Australian bushfires, causing devastating damage to wildlife habitat, with many belonging to species listed at threatened to extinction \cite{wildfireveg}.
 
+Evidently, It has become increasingly crucial to detect wildfires as early as possible to minimize damage to humans and the environment. Current methods of wildfire detection involve three main approaches:
+\begin{enumerate}
+\item{Terrestrial sensor nodes, which may be placed at fire-prone locations to detect wildfires through environmental readings.}
+\item{UAVs can be employed to scan large forest areas and inaccessible terrain.}
+\item{Satellite based systems can cover vast areas of land and determine the extent and direction of wildfires.}
+\end{enumerate}
 
-
-% Therefore, it
-% has become increasingly crucial to detect them as early as possible.
-
-
-
-% This report aims to explore different methods employed in improving the
-% performance and efficiency of wildfire detection systems, with a focus
-% on computer vision based fire detection using Convolutional Neural
-% Networks (CNNs). Fire detection is carried out through a variety of
-% mediums, such as terrestrial sensor nodes, UAV scanning and satellite
-% based approaches. Observing the literature, it is apparent that computer
-% vision plays a significant role in all systems, Making it important to
-% maximise their efficiency and accuracy. Furthermore, it is important to
-% optimise such systems to run on low-powered edge computing devices,
-% which are currently used to detect wildfires. To this end, a multitude
-% of image preprocessing filters relevant to fire detection are explored
-% report.
-
-% intro
-% Significance
-% state of art
-% problems in existing methods
-% main issue
-
-% Lit review
-% how is problem solved in literature
-
-This paper contributes a benchmark of different pre-processing filters
-and algorithms to uncover insights on an ideal pipeline for wildfire
-detection, using metrics such as speed, power consumption and model
-accuracy. The benchmarks are carried out on a Raspberry Pi 4B, to
-similate low-powered edge computing hardware that is consistently used
-in terrestrial, UAV and satellite systems. Large deep-learning networks
-are unviable on these systems due to the high computational intensity,
-while models with reduced parameters are more efficient but suffer from
-less accurate inference. The preprocessing pipeline aims to improve the
-accuracy of lightweight models by highlighting important features in
-fire and smoke, while reducing unwanted noise in the image.
-
-Furthermore, an improved system for early smoke detection is
-investigated. The proposed dark channel prior + edge detection algorithm
-aims to improve on existing methods of smoke preprocessing using DCP
-detailed in \cite{prepfire}. Specifically, false positives due to high
-light intensity artifacts in the image such as the sky are significantly
-mitigated, thanks to edge detection filters revealing characteristics
-that are unique to smoke.
-
-
-
-\section{Literature Review}
-
-UAVs have seen extensive research for this application, as they provide
-valuable visual data which can be employed to carry out search and
-rescue operations, save forest resources, help firefighters navigate
-efficiently amoung numerous other enhancements. Rather than sending
-ground crews to monitor hazardous environments, UAVs can drastically
-reduce the risk to firefighting crews by remotely scanning large amounts
-of dangerous forest area. However UAVs tend to perform poorly in harsh
-weather conditions, have limited flight time and require a human
-operator to have a visual line of sight \cite{uav}. These factors
-combined with expensive operation costs severly limit the effectiveness
-of UAVs in many circumstances.
-
-Edge computing sensor nodes can be placed at high risk locations that
-can monitor temperature, humidity and other characteristics of air in
-the surrounding area. These systems generally use a microcontroller to
-operate sensors, relying on solar cells for long-term power. By setting
-up multiple such nodes in different areas forming a Wireless Sensor
-Network (WSN), the collected sensor data may then be analyzed to
-determine the locations of fire events \cite{MohapatraAnkita2022EWDT}.
-More advance methods of data classification with the use of artificial
-neural networks boast a high accuracy of \textgreater82\% with multiple
-sensors \cite{wsnfire}. The low cost of WSN systems has made it an
-increasingly popular choice for real-time monitoring of forest fires.
-However, sensor nodes fail to be viable in some situations. Establishing
-wireless communications for a WSN can prove challenging in rural or
-untamed areas such as forests \cite{wsnyolo}. The sensor nodes may also
-be prone to damage from the wildfire, needing to be replaced in order to
-continue using the system.
-
-Satellite-based fire detection can potentially offer significant
-advantages over traditional methods due to the vast areas they can
-monitor. The benefits and limitations of these systems largely depend on
-the satellite's orbit. Satellites in Sun-Synchronous Orbit (SSO) provide
-high spatial resolution but revisit the same location only after several
-days, resulting in low temporal resolution. This delay makes SSO
-satellites less effective for real-time wildfire detection
-\cite{satellite}. In contrast, Geostationary Earth Orbit (GEO) satellites
-remain fixed over the same region, as their orbital period matches
-Earth's rotation. Equipped with multispectral imaging sensors, GEO
-satellites provide continuous monitoring, making them ideal for
-detecting and tracking fires in real time.
-
-\IEEEpubidadjcol
 Despite the various classifications of technologies within wildfire
 detection, advancements in computer vision object detection has spurred
 use in terrestrial, aerial as well as satellite systems. \cite{satellite}
@@ -182,6 +96,7 @@ cost WSN fire detection approach based on YOLO object detection models.
 The system, named SDFS was trained on a dataset of 26,520 images and
 achieved a high precision rate of 97.1\% for smoke and fire
 classification.
+\IEEEpubidadjcol
 
 Due to the importance of computer vision based object detection in
 wildfire detection, it is imperative that they are as accurate as
@@ -202,6 +117,59 @@ detection to assist models with classification by eliminating unwanted
 noise in images. This method has observed to improve fire detection
 accuracy by 5.5\% and smoke detection by 6\% in object detection models.
 
+% ISSUES
+% come around to edge computing CV problem here
+However, detecting smoke and fire can prove challenging to a neural network model for a variety of reasons.
+Uneven and dim lighting conditions can pose substantial difficulties while detecting smoke edges in an image.
+The inconsistent shape and colour of fire as well as smoke can further cause complications.
+Xin et al. \cite{resnetsmoke} Employs the use of a deep ResNet architecture in order to tackle this issue.
+Accurately and consistently detecting smoke, as a result, tends to require deeper models that are capable of learning complex features.
+Wildfire detection is often performed in remote terrestrial regions, aerially or from space, which will limit the computational power available for running neural networks.
+Additionally, the network must maintain real-time inference, as latency is critical in detecting fires as early as possible.
+These factors make larger complex neural networks suboptimal for wildfire detection.
+Therefore, a solution to real-time smoke detection that can be powered by low-specification edge computing devices such as a Raspberry Pi must be explored.
+
+% ADDRESSING THE PROBLEM
+This report aims to explore different methods employed in improving the
+performance and efficiency of wildfire detection systems, with a focus
+on computer vision based fire detection using Convolutional Neural
+Networks (CNNs). Fire and smoke detection is carried out through a variety of
+mediums, such as terrestrial sensor nodes, UAV scanning and satellite
+based approaches. Observing the literature, it is apparent that computer
+vision plays a significant role in all systems, Making it important to
+maximise their efficiency and accuracy. Furthermore, it is important to
+optimise such systems to run on low-powered edge computing devices,
+which are currently used to detect wildfires. To this end, a multitude
+of image preprocessing filters relevant to smoke detection were explored. 
+A pipeline of processing that involves Dark Channel Prior in combination with smoke edge detection with Sobel kernels is proposed and benchmarked in this report. 
+The proposed dark channel prior + edge detection algorithm
+aims to improve on existing methods of smoke preprocessing using DCP
+detailed in \cite{prepfire}. Specifically, false positives due to high
+light intensity artifacts in the image such as the sky are significantly
+mitigated, thanks to edge detection filters revealing characteristics
+that are unique to smoke.
+
+The benchmarks are carried out on a Raspberry Pi 4B, to
+similate low-powered edge computing hardware that is consistently used
+in terrestrial, UAV and satellite systems. Large deep-learning networks
+are unviable on these systems due to the high computational intensity,
+while models with reduced parameters are more efficient but suffer from
+less accurate inference. The preprocessing pipeline aims to improve the
+accuracy of lightweight models by highlighting important features in
+fire and smoke, while reducing unwanted noise in the image.
+To this end, a YOLOv8 nano model is trained on an open source Wildfire Smoke Detection dataset \cite{yolov8}.
+This model is compared with another model that has been trained on the exact same dataset, but with the smoke enhancing preprocessing pipeline stated above.
+
+%Furthermore, an improved system for early smoke detection is
+%investigated. 
+% This paper contributes a benchmark of different pre-processing filters
+%and algorithms to uncover insights on an ideal pipeline for wildfire
+%detection, using metrics such as speed, power consumption and model
+%accuracy.
+
+\section{Literature Review}
+
+
 \begin{figure}
         \centering
         \includegraphics[width=2.5in]{sensornode.png}
@@ -215,9 +183,51 @@ accuracy by 5.5\% and smoke detection by 6\% in object detection models.
         \caption{Satellite Based Wildfire Detection}
 \end{figure}
 
-\section{Image Pre-Processing Algorithms}
+Edge computing sensor nodes can be placed at high risk locations that
+can monitor temperature, humidity and other characteristics of air in
+the surrounding area. These systems generally use a microcontroller to
+operate sensors, relying on solar cells for long-term power. By setting
+up multiple such nodes in different areas forming a Wireless Sensor
+Network (WSN), the collected sensor data may then be analyzed to
+determine the locations of fire events \cite{MohapatraAnkita2022EWDT}.
+More advance methods of data classification with the use of artificial
+neural networks boast a high accuracy of \textgreater82\% with multiple
+sensors \cite{wsnfire}. The low cost of WSN systems has made it an
+increasingly popular choice for real-time monitoring of forest fires.
+However, sensor nodes fail to be viable in some situations. Establishing
+wireless communications for a WSN can prove challenging in rural or
+untamed areas such as forests \cite{wsnyolo}. The sensor nodes may also
+be prone to damage from the wildfire, needing to be replaced in order to
+continue using the system.
 
-\subsection{HSV filter}
+UAVs have seen extensive research for this application, as they provide
+valuable visual data which can be employed to carry out search and
+rescue operations, save forest resources, help firefighters navigate
+efficiently amoung numerous other enhancements. Rather than sending
+ground crews to monitor hazardous environments, UAVs can drastically
+reduce the risk to firefighting crews by remotely scanning large amounts
+of dangerous forest area. However UAVs tend to perform poorly in harsh
+weather conditions, have limited flight time and require a human
+operator to have a visual line of sight \cite{uav}. These factors
+combined with expensive operation costs severly limit the effectiveness
+of UAVs in many circumstances.
+
+Satellite-based fire detection can potentially offer significant
+advantages over traditional methods due to the vast areas they can
+monitor. The benefits and limitations of these systems largely depend on
+the satellite's orbit. Satellites in Sun-Synchronous Orbit (SSO) provide
+high spatial resolution but revisit the same location only after several
+days, resulting in low temporal resolution. This delay makes SSO
+satellites less effective for real-time wildfire detection
+\cite{satellite}. In contrast, Geostationary Earth Orbit (GEO) satellites
+remain fixed over the same region, as their orbital period matches
+Earth's rotation. Equipped with multispectral imaging sensors, GEO
+satellites provide continuous monitoring, making them ideal for
+detecting and tracking fires in real time.
+
+\subsection{Image Pre-Processing Algorithms}
+
+\subsubsection{HSV filter}
 
 Hue, Saturation, Value (HSV) is a cylindrical-coordinate representation
 of points in an RGB colour model. It is an alternative representation of
@@ -240,13 +250,37 @@ bounds were used to preprocess images in the paper:
         0, otherwise
 \end{cases}\]
 
-\begin{figure}
-        \centering
-        \includegraphics[width=2.5in]{hsv_filter.jpg}
-        \caption{Resulting Image after HSV mask}
-\end{figure}
+% \begin{figure}
+%         \centering
+%         \begin{subfigure}[b]{0.5\textwidth}
+%                 \centering
+%                 \includegraphics[width=\textwidth]{hsv_filter.png}
+%                 \caption{$filtered image$}
+%                 \label{fig:y equals x}
+%         \end{subfigure}
+%         \hfill
+%         \begin{subfigure}[b]{0.5\textwidth}
+%                 \centering
+%                 \includegraphics[width=\textwidth]{hsv_original.jpeg}
+%                 \caption{$original image$}
+%                 \label{fig:y equals x}
+%         \end{subfigure}
+%         \caption{Resulting Image after HSV mask}
+% \end{figure}
 
-\subsection{Edge \& Contour Detection}
+\begin{figure*}[!t]
+\centering
+\subfloat[]{\includegraphics[width=2.5in]{hsv_original.jpeg}%
+\label{hsv_orig}}
+\hfil
+\subfloat[]{\includegraphics[width=2.5in]{hsv_filter.png}%
+\label{hsv_filter}}
+        \caption{Example of Image filtered using the described HSV mask. (a) Original image. (b) Filtered image.}
+\label{hsvimg}
+\end{figure*}
+
+
+\subsubsection{Edge \& Contour Detection}
 
 Edge detection involves identifying regions of an image where the
 contrast between pixels changes dramatically. Capturing edges can be
@@ -322,12 +356,16 @@ almost completely dark.
 
 \begin{figure}
         \centering
-        \includegraphics[width=2in]{sobelsmoke.png}
+        \subfloat[]{\includegraphics[width=2in]{sobel_original.png}%
+        \label{sobel_orig}}
+        \hfil
+        \subfloat[]{\includegraphics[width=2in]{sobel.png}%
+        \label{sobel_filter}}
         \caption{Image with smoke processed using a basic sobel filter}
         \label{sobelimg}
 \end{figure}
 
-\subsection{Corner Detection}
+\subsubsection{Corner Detection}
 
 Corner detection is a common technique used in computer vision to infer
 features from an image. \cite{prepfire} shows that a corner detection
@@ -386,7 +424,7 @@ inferred through a CNN.
         \label{corner}
 \end{figure}
 
-\subsection{Dark Channel Prior}
+\subsubsection{Dark Channel Prior}
 
 Dark Channel Prior has been commonly used to measure the degree of
 haziness as well as haze-removal in images. The technique is based on
@@ -430,13 +468,17 @@ thresholded output image.
 
 \begin{figure}
         \centering
-        \includegraphics[width=2.5in]{dcp.png}
+        \subfloat[]{\includegraphics[width=2in]{WildfireSmoke.jpeg}%
+        \label{dcp_orig_img}}
+        \hfil
+        \subfloat[]{\includegraphics[width=2in]{dcp_original.png}%
+        \label{dcp_orig}}
         \caption{Image processed with Dark channel prior \& thresholded to high
-        intensity values}
+        intensity values (a) Original image (b) Dark channel processed image}
         \label{dcp}
 \end{figure}
 
-\subsection{Histogram Equalization}
+\subsubsection{Histogram Equalization}
 
 Histogram Equalization increases the global contrast in images, which
 can enhance the visibility of finer details within an image. The
@@ -479,7 +521,11 @@ contrast and visibility in the image. An example of this contrast enhancement in
 
 \begin{figure}
         \centering
-        \includegraphics[width=2in]{firehe.png}
+        \subfloat[]{\includegraphics[width=2in]{he_original.png}%
+        \label{he_orig}}
+        \hfil
+        \subfloat[]{\includegraphics[width=2in]{he_processed.png}%
+        \label{he_processed}}
         \caption{Histogram equalization on image}
         \label{heq}
 \end{figure}
@@ -497,7 +543,6 @@ This could cause inconsistent results particularly in terrestrially
 placed detection nodes, where the camera might have small parts of the
 sky in frame.
 
-A method to address this shortcoming using edge detection is explored.
 Generally, we can assume that smoke in an image is more noisy and
 contains contours and textures that a plain sky would not have. This
 texture can be picked up by a Sobel operator in an edge response image.
@@ -520,6 +565,17 @@ response image is generously dilated and blurred in order to mitigate
 small dark spots in the image as they are irrelevant. After applying a
 binary threshold, this image is used on the DCP output to suppress the
 pixel regions of sky.
+
+\section{Drawbacks}
+
+The proposed Sobel/DCP method eliminates sky regions from an image in most cases.
+However the performance may be inconsistent in certain conditions such as cloudy skies or the presence of black smoke.
+In certain situations where the sky is partially cloudy, clouds may take up a similar shape and texture to early wildfire smoke, scattering light in a similar way causing the algorithm to classify it as a positive region for the existence of smoke. 
+Black smoke, usually associated with the combustion of fuels is missed by the algorithm as it's dark channel light intensity falls lower than the algorithm's threshold. 
+
+The Sobel/DCP algorithm's downsides indicates effectiveness specifically at white or light gray smoke. Darker smokes have the propensity to have light intensities that are too low for the algorithm to notice. Studies have linked light gray and white smoke with smouldering fires or those in early stages \cite{smokecolour}. The proposed algorithm could prove to be useful at early wildfire detection, allowing a wildfire response team to be notified faster, potentially preventing a larger disaster.
+
+% need images..
 
 \section{Experimental Results}
 
@@ -548,9 +604,22 @@ characteristics that DCP can detect.
 
 \begin{figure}
         \centering
-        \includegraphics[width=3in]{edgedcp.png}
+        \subfloat[]{\includegraphics[width=2in]{WildfireSmoke.jpeg}%
+        \label{edcp_orig}}
+        \hfil
+        \subfloat[]{\includegraphics[width=2in]{dcp_original.png}%
+        \label{edcp_b}}
+        \hfil
+        \subfloat[]{\includegraphics[width=2in]{edcp_sobel.png}%
+        \label{edcp_c}}
+        \hfil
+        \subfloat[]{\includegraphics[width=2in]{edcp_skyfilter.png}%
+        \label{edcp_d}}
+        \hfil
+        \subfloat[]{\includegraphics[width=2in]{edcp.png}%
+        \label{edcp_e}}
         \caption{Edge Detection \& DCP Filtering to detect smoke without
-        conflating sky regions}
+        conflating sky regions (a) Original image. (b) DCP processed image. (c) Sobel filtered image. (d) Sky filter by dilating the sobel output. (e) Thresholded DCP image combined with sky filter, leaving only smoke regions.}
         \label{edgedcp}
 \end{figure}
 

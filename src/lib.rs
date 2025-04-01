@@ -32,7 +32,6 @@ pub fn apply_hsv_filter(img: &mut image::ImageBuffer<Rgb<u8>, Vec<u8>>, color_re
     });
 }
 
-// might benefit from caching
 pub fn is_in_range(rgb: &Rgb<u8>, color_region: &Vec<(f32, f32)>) -> bool {
     let r = rgb[0] as f32 / 255.0;
     let g = rgb[1] as f32 / 255.0;
@@ -45,11 +44,11 @@ pub fn is_in_range(rgb: &Rgb<u8>, color_region: &Vec<(f32, f32)>) -> bool {
     let h = if delta == 0.0 {
         0.0
     } else if max == r {
-        60.0 * (((g - b) / delta) % 6.0)
+        (60.0 * ((g - b) / delta) + 360.0) % 360.0
     } else if max == g {
-        60.0 * (((b - r) / delta) + 2.0)
+        (60.0 * ((b - r) / delta) + 120.0) % 360.0
     } else {
-        60.0 * (((r - g) / delta) + 4.0)
+        (60.0 * ((r - g) / delta) + 240.0) % 360.0
     };
 
     let hue = if h < 0.0 { h + 360.0 } else { h };

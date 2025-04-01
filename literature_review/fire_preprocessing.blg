@@ -8,49 +8,52 @@ Reallocated singl_function (elt_size=8) to 100 items from 50.
 Reallocated wiz_functions (elt_size=8) to 6000 items from 3000.
 Reallocated singl_function (elt_size=8) to 100 items from 50.
 Database file #1: ref.bib
+Warning--entry type for "yolov8" isn't style-file defined
+--line 448 of file ref.bib
 -- IEEEtran.bst version 1.14 (2015/08/26) by Michael Shell.
 -- http://www.michaelshell.org/tex/ieeetran/bibtex/
 -- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
 
 Done.
-You've used 23 entries,
+You've used 29 entries,
             4087 wiz_defined-function locations,
-            983 strings with 13648 characters,
-and the built_in function-call counts, 18936 in all, are:
-= -- 1551
-> -- 483
-< -- 144
-+ -- 277
-- -- 112
-* -- 1052
-:= -- 2877
-add.period$ -- 49
-call.type$ -- 23
-change.case$ -- 29
-chr.to.int$ -- 291
-cite$ -- 23
-duplicate$ -- 1358
-empty$ -- 1423
-format.name$ -- 112
-if$ -- 4364
+            1023 strings with 15948 characters,
+and the built_in function-call counts, 24706 in all, are:
+= -- 2008
+> -- 690
+< -- 188
++ -- 388
+- -- 155
+* -- 1379
+:= -- 3714
+add.period$ -- 61
+call.type$ -- 29
+change.case$ -- 36
+chr.to.int$ -- 378
+cite$ -- 29
+duplicate$ -- 1757
+empty$ -- 1816
+format.name$ -- 161
+if$ -- 5703
 int.to.chr$ -- 0
-int.to.str$ -- 23
-missing$ -- 249
-newline$ -- 108
-num.names$ -- 24
-pop$ -- 530
+int.to.str$ -- 29
+missing$ -- 334
+newline$ -- 132
+num.names$ -- 30
+pop$ -- 723
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 2
-skip$ -- 1426
+skip$ -- 1856
 stack$ -- 0
-substring$ -- 793
-swap$ -- 1164
-text.length$ -- 47
+substring$ -- 1013
+swap$ -- 1528
+text.length$ -- 62
 text.prefix$ -- 0
 top$ -- 5
-type$ -- 23
+type$ -- 29
 warning$ -- 0
-while$ -- 69
-width$ -- 25
-write$ -- 279
+while$ -- 88
+width$ -- 31
+write$ -- 351
+(There was 1 warning)
